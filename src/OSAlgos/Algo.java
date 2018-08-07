@@ -6,6 +6,7 @@
 package OSAlgos;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -14,24 +15,11 @@ import java.util.ArrayList;
 public class Algo{
     private int totalTime = 0;
     private final ArrayList<Process> processList;
-    private final javax.swing.JTextArea textArea;
     
-    Algo(ArrayList<Process> newList, javax.swing.JTextArea ta){
+    Algo(ArrayList<Process> newList){
         processList = newList;
-        textArea = ta;
     }
     
-    public void append(String s){
-        String currentText = textArea.getText();
-        if(currentText.equals(""))
-            textArea.setText(s); 
-        else
-            textArea.setText(currentText + "\n" + s);
-    }
-    
-    public void clearConsole(){
-        textArea.setText("");
-    }
     public void setTime(int newTime){totalTime = newTime;}
     public int getTime(){return totalTime;}
     
@@ -49,5 +37,13 @@ public class Algo{
             newList.add(p);
         });
         return newList;
+    }
+    
+    public void sortByArrivalTime(){
+        Collections.sort(processList,new ArrivalTimeComparator());
+    }
+    
+    public void sortByArrivalTimePrio(){
+        Collections.sort(processList,new ArrivalTimePrioComparator());
     }
 }

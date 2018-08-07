@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * @author Dan
  */
 public class SRT extends Algo{
-    SRT(ArrayList<Process> arr, javax.swing.JTextArea ta){
-        super(arr, ta);
+    SRT(ArrayList<Process> arr){
+        super(arr);
     }
     
     public void go() throws InterruptedException{

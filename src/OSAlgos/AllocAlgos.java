@@ -47,29 +47,6 @@ public class AllocAlgos extends javax.swing.JFrame {
     int quantum = -1;
     ArrayList<Process> processList = new ArrayList<>();
     
-    private void sortByPriority(ArrayList<Process> list){
-        ArrayList<Process> tempList = new ArrayList<>();
-        list.forEach((p) -> {
-            tempList.add(p);
-        });
-        Comparator c;
-        c = Comparator.naturalOrder();
-        tempList.sort(c);
-        
-        StringBuilder listString = new StringBuilder();
-        for(Process p : tempList){
-            listString.append("Process #").append(p.getArrivalTime())
-                    .append("\nName: ").append(p.getName())
-                    .append("\nCycles: ").append(p.getCycles())
-                    .append("\n\n");
-        }
-        JOptionPane.showMessageDialog(null, listString.toString());
-    }
-    
-    private void append(String text){
-        String currentText = txt_Console.getText();
-        txt_Console.setText(currentText + "\n" + text);
-    }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -469,35 +446,30 @@ public class AllocAlgos extends javax.swing.JFrame {
             }
             else{
                 switch(algo){
-                    case "FCFS" :   FCFS algo0 = new FCFS(processList, txt_Console);
+                    case "FCFS" :   FCFS algo0 = new FCFS(processList);
                                     algo0.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
                                     processList.clear();
-                                    clearAll();   
                                     break;
-                    case "SJN/SJF" : SJN algo1 = new SJN(processList, txt_Console);
+                    case "SJN/SJF" : SJN algo1 = new SJN(processList);
                                     algo1.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
                                     processList.clear();
-                                    clearAll();   
                                     break;
-                    case "Priority Scheduling" : PSched algo2 = new PSched(processList, txt_Console);
+                    case "Priority Scheduling" : PSched algo2 = new PSched(processList);
                                     algo2.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
                                     processList.clear();
-                                    clearAll();   
                                     break;
-                    case "SRT" : SRT algo3 = new SRT(processList, txt_Console);
+                    case "SRT" : SRT algo3 = new SRT(processList);
                                     algo3.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details"); 
                                     processList.clear();
-                                    clearAll();  
                                     break;
-                    case "Round Robin" : RoundRobin algo4 = new RoundRobin(processList, txt_Console,quantum);
+                    case "Round Robin" : RoundRobin algo4 = new RoundRobin(processList,quantum);
                                     algo4.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");  
                                     processList.clear();
-                                    clearAll(); 
                                     break;
                     case "choose..." : JOptionPane.showMessageDialog(null, "Please choose an algorithm"); cb_Algo.requestFocus();break;
                     default : System.out.println("lolwat"); break;
@@ -564,14 +536,6 @@ public class AllocAlgos extends javax.swing.JFrame {
 
     private void lbl_QuantumMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_QuantumMouseClicked
         // TODO add your handling code here:
-        Stack s = new Stack();
-        Process p0,p1,p;
-        p0 = new Process("Process0", 100,0,5);
-        p1 = new Process("Process1", 100,0,5);
-        s.push(p0);
-        s.push(p1);
-        p = s.pop();
-        System.out.println(p);
     }//GEN-LAST:event_lbl_QuantumMouseClicked
 
     private void btn_GoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GoActionPerformed
