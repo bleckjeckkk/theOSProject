@@ -74,7 +74,7 @@ public class FCFS extends Algo{
 
 class DisplayTimeline extends JPanel implements ActionListener{
     Timer tm = new Timer(5,this);
-    int x = 0, y= 10, velX = 1;
+    int x = 0, y= 10, velX = 1, i=1;
     int[] timeArr = new int[20];
     int totaltime = 0;
     
@@ -83,61 +83,65 @@ class DisplayTimeline extends JPanel implements ActionListener{
         timeArr = time;
         totaltime = total;
         for(int i=0; i<18; i++){
-            timeArr[i+1] = timeArr[i] + timeArr[i+1];
+            if(timeArr[i+1] != 0)
+                timeArr[i+1] = timeArr[i] + timeArr[i+1];
         }
     }
     
     public void paintComponent(Graphics g){
         
-        if(!(x >= timeArr[0]*10)){
-            g.setColor(Color.GREEN);
-            g.fillRect(5,5,x,40);
-        }
-        else{
-            g.setColor(Color.GREEN);
-            g.fillRect(5,5,timeArr[0]*10,40);
-        }
+        g.setColor(Color.GREEN);
+        g.fillRect(5,5,x,40);
+        g.drawString("Job 1:" + timeArr[0]*10, 5,55);
         
-        if((x >= timeArr[0]*10 && timeArr[0]!=0) && !(x >= timeArr[1]*10)){
+        if((x > timeArr[0]*10 && timeArr[0]!=0)){
             g.setColor(Color.BLUE);
             g.fillRect(timeArr[0]*10,5,x,40);
+            g.drawString("Job 2:" + timeArr[1]*10, timeArr[0]*10,55);
+            i=1;
         }
-        else{
-            g.fillRect(timeArr[0]*10,5,timeArr[1],40);
-            g.drawString("Job 1", timeArr[0]*10,55);
-        }
-        if(x >= timeArr[1]*10 && timeArr[1]!=0){
+        if(x > timeArr[1]*10 && timeArr[1]!=0){
             g.setColor(Color.RED);
             g.fillRect(timeArr[1]*10,5,x,40);
-            g.drawString("Job 2", timeArr[1]*10,55);
-        }   
-        if(x >= timeArr[2]*10 && timeArr[2]!=0){
+            g.drawString("Job 3:" + timeArr[2]*10, timeArr[1]*10,55);
+            i=2;
+        }
+        if(x > timeArr[2]*10 && timeArr[2]!=0){
             g.setColor(Color.ORANGE);
             g.fillRect(timeArr[2]*10,5,x,40);
-            g.drawString("Job 3", timeArr[2]*10,55);
+            g.drawString("Job 4:" + timeArr[3]*10, timeArr[2]*10,55);
+            i=3;
         }
-        if(x >= timeArr[3]*10 && timeArr[3]!=0){
+        if(x > timeArr[3]*10 && timeArr[3]!=0){
             g.setColor(Color.PINK);
             g.fillRect(timeArr[3]*10,5,x,40);
-            g.drawString("Job 4", timeArr[3]*10,55);
+            g.drawString("Job 5:" + timeArr[4]*10 , timeArr[3]*10,55);
+            i=4;
         }
         if(x >= timeArr[4]*10 && timeArr[4]!=0){
             g.setColor(Color.MAGENTA);
             g.fillRect(timeArr[4]*10,5,x,40);
-            g.drawString("Job 3", timeArr[4]*10,55);
+            g.drawString("Job 6:" + timeArr[5]*10, timeArr[4]*10,55);
+            i=5;
         }
-        if(x >= timeArr[5]*10 && timeArr[5]!=0){
+        if(x > timeArr[5]*10 && timeArr[5]!=0){
             g.setColor(Color.CYAN);
             g.fillRect(timeArr[5]*10,5,x,40);
-            g.drawString("Job 4", timeArr[5]*10,55);
+            g.drawString("Job 7:" + timeArr[6]*10, timeArr[5]*10,55);
+            i=6;
         }
-        if(x >= timeArr[6]*10 && timeArr[6]!=0){
+        if(x > timeArr[6]*10 && timeArr[6]!=0){
             g.setColor(Color.GRAY);
             g.fillRect(timeArr[6]*10,5,x,40);
-            g.drawString("Job 5", timeArr[6]*10,55);
+            g.drawString("Job 8:" + timeArr[7]*10, timeArr[6]*10,55);
+            i=7;
         }
         
-        tm.start();
+        
+        if(timeArr[i]!=0 && x<=timeArr[i]*10)
+            tm.start();
+        else
+            tm.stop();
     }
     
     public void actionPerformed(ActionEvent e){
