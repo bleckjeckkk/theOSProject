@@ -12,8 +12,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 /**
  *
  * @author Dan
