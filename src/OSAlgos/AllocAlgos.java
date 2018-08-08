@@ -387,6 +387,7 @@ public class AllocAlgos extends javax.swing.JFrame {
                                     algo1.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
                                     aa.setEnabled(true);
+                                    clearAll();
                                     processList.clear();
                                     break;
                     case "Priority Scheduling" : PSched algo2 = new PSched(processList);
@@ -394,6 +395,7 @@ public class AllocAlgos extends javax.swing.JFrame {
                                     algo2.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
                                     aa.setEnabled(true);
+                                    clearAll();
                                     processList.clear();
                                     break;
                     case "SRT" : SRT algo3 = new SRT(processList);
@@ -401,6 +403,7 @@ public class AllocAlgos extends javax.swing.JFrame {
                                     algo3.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details"); 
                                     aa.setEnabled(true);
+                                    clearAll();
                                     processList.clear();
                                     break;
                     case "Round Robin" : RoundRobin algo4 = new RoundRobin(processList,quantum);
@@ -408,6 +411,7 @@ public class AllocAlgos extends javax.swing.JFrame {
                                     algo4.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");  
                                     aa.setEnabled(true);
+                                    clearAll();
                                     processList.clear();
                                     break;
                     case "choose..." : JOptionPane.showMessageDialog(null, "Please choose an algorithm"); cb_Algo.requestFocus();break;

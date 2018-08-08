@@ -40,7 +40,7 @@ public class PSched extends Algo{
                 
                 System.out.println("Done!\n");
                 
-                animateMe.add(new Animatable(name,cycles,true,p.getPriority()));
+                animateMe.add(new Animatable(name,cycles,true,p.getPriority(),time));
             }
             else{
                 break;
@@ -60,7 +60,8 @@ public class PSched extends Algo{
                 
                 time = time + cycles;
                 System.out.println("Done!\n");
-                animateMe.add(new Animatable(name,cycles,true,p.getPriority()));
+                System.out.println(time);
+                animateMe.add(new Animatable(name,cycles,true,p.getPriority(),time));
             }
         }
         System.out.println("Priority Scheduling done!\n" 

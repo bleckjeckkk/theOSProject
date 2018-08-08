@@ -49,6 +49,8 @@ class DisplayTimeline_PSched extends JPanel implements ActionListener{
             }
             g.fillRect(startX,y,x,20);
             if(x == pList.get(i).size){
+                g.setColor(Color.BLACK);
+                g.drawString(String.valueOf(pList.get(i).time), startX + x + 5,y + 15);
                 i++;
                 startX += pList.get(i).size;
                 y += 30;
