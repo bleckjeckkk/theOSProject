@@ -13,7 +13,7 @@ import javax.swing.Timer;
 class DisplayTimeline_RR extends JPanel implements ActionListener{
     Timer tm = new Timer(5,this);
     int startX = 25;
-    int x = 0, y = 5, velX = 1;
+    int x = 0, y = 30, velX = 1;
     
     int qTime;
     
@@ -37,6 +37,11 @@ class DisplayTimeline_RR extends JPanel implements ActionListener{
         System.out.println("paintComponent");
         tm.start();
         
+        g.setColor(Color.WHITE);
+        g.fillRect(5,5,40,20);
+        g.setColor(Color.BLACK);
+        g.drawString("Quantum Time: " + qTime, 5, 20);
+        
         try{
             g.setColor(Color.BLACK);
             g.drawString(pList.get(i).processName, 5,y + 15);
@@ -46,9 +51,11 @@ class DisplayTimeline_RR extends JPanel implements ActionListener{
                 g.setColor(Color.GREEN);
             }
             g.fillRect(startX,y,x,20);
-            if(x == qTime){
+            if(x == pList.get(i).time){
+                g.setColor(Color.BLACK);
+                g.drawString(String.valueOf(pList.get(i).priority) + "("+ String.valueOf(pList.get(i).time) +")", startX + x + 5,y + 15);
                 i++;
-                startX += qTime;
+                startX += pList.get(i-1).time;
                 y += 30;
                 x = 0;
             }

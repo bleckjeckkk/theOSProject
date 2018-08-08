@@ -18,6 +18,7 @@ import javax.swing.JFrame;
  */
 public class FCFS extends Algo{
     int[] timeArr = new int[20];
+    ArrayList<Animatable> animateMe = new ArrayList<>();
     int total = 0;
     
     FCFS(ArrayList<Process> arr){
@@ -50,6 +51,7 @@ public class FCFS extends Algo{
             timeArr[j] = cycles;
             System.out.println("Done!\n");
             j++;
+            animateMe.add(new Animatable(name,cycles,time));
         }
         System.out.println("FCFS done!\n" 
                 + "Cycles elapsed: " + time);
@@ -57,14 +59,14 @@ public class FCFS extends Algo{
         //DISPLAY
         total = time;
         System.out.print("proc:" + Arrays.toString(timeArr));
-        DisplayTimeline_FCFS d = new DisplayTimeline_FCFS(timeArr,time);
+        //DisplayTimeline_FCFS d = new DisplayTimeline_FCFS(timeArr,time);));
+        DisplayTimeline_FCFS d = new DisplayTimeline_FCFS(animateMe);
         
         JFrame jf = new JFrame();
         
         
         jf.setTitle("DisplayTimeline");
-        jf.setSize(1500,400);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        jf.setSize(1280,720);
         jf.add(d);
         jf.setVisible(true);
     }

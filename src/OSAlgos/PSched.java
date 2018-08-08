@@ -73,7 +73,6 @@ public class PSched extends Algo{
         
         jf.setTitle("DisplayTimeline");
         jf.setSize(1280,720);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.add(d);
         jf.setVisible(true);
     }

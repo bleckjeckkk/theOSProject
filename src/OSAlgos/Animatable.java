@@ -16,6 +16,15 @@ public class Animatable {
     private static int order = 0;
     int sequence;
     int priority;
+    int end;
+    int time;
+    
+    Animatable(String name, int size, int end){
+        processName = name;
+        this.size = size;
+        sequence = order++;
+        this.end = end;
+    }
     
     Animatable(String name, int size, Boolean isDone){
         processName = name;
@@ -30,5 +39,14 @@ public class Animatable {
         this.isDone = isDone;
         sequence = order++;
         this.priority = priority;
+    }
+    
+    Animatable(String name, int size, Boolean isDone,int priority,int time){
+        processName = name;
+        this.size = size;
+        this.isDone = isDone;
+        sequence = order++;
+        this.priority = priority;
+        this.time = time;
     }
 }

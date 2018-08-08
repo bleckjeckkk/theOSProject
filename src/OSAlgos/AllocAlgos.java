@@ -5,12 +5,8 @@
  */
 package OSAlgos;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import static java.lang.Integer.parseInt;
 import java.util.ArrayList;
-import java.util.Comparator;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,6 +33,7 @@ public class AllocAlgos extends javax.swing.JFrame {
         txt_ProcessName.setText("");
         txt_ProcessCycles.setText("");
         txt_Quantum.setText("");
+        txt_Console.setText("Process List cleared!");
     }
     
     String processName;
@@ -44,18 +41,12 @@ public class AllocAlgos extends javax.swing.JFrame {
     int priority = -1;
     int arrivalTime = -1;
     String algo = "choose...";
-    int quantum = -1;
+    int quantum = 1;
     ArrayList<Process> processList = new ArrayList<>();
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
-        jFrame1 = new javax.swing.JFrame();
-        jFrame2 = new javax.swing.JFrame();
-        jFrame3 = new javax.swing.JFrame();
-        jFrame4 = new javax.swing.JFrame();
-        jFrame5 = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
         lbl_ProcessName = new javax.swing.JLabel();
         txt_ProcessName = new javax.swing.JTextField();
@@ -76,72 +67,6 @@ public class AllocAlgos extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_Console = new javax.swing.JTextArea();
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
-        jFrame2.getContentPane().setLayout(jFrame2Layout);
-        jFrame2Layout.setHorizontalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame2Layout.setVerticalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame3Layout = new javax.swing.GroupLayout(jFrame3.getContentPane());
-        jFrame3.getContentPane().setLayout(jFrame3Layout);
-        jFrame3Layout.setHorizontalGroup(
-            jFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame3Layout.setVerticalGroup(
-            jFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame4Layout = new javax.swing.GroupLayout(jFrame4.getContentPane());
-        jFrame4.getContentPane().setLayout(jFrame4Layout);
-        jFrame4Layout.setHorizontalGroup(
-            jFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame4Layout.setVerticalGroup(
-            jFrame4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jFrame5Layout = new javax.swing.GroupLayout(jFrame5.getContentPane());
-        jFrame5.getContentPane().setLayout(jFrame5Layout);
-        jFrame5Layout.setHorizontalGroup(
-            jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jFrame5Layout.setVerticalGroup(
-            jFrame5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -432,6 +357,9 @@ public class AllocAlgos extends javax.swing.JFrame {
             }
             Process p = new Process(processName, processCycles,arrivalTime,priority);
             processList.add(p);
+            txt_Console.setText(txt_Console.getText() + "\nAdded Process '" + processName + "' -- " + processCycles + " cycles\n"
+                                + "Arrival Time : " + arrivalTime + "\n"
+                                + "Priority : " + priority);
         }
         else{
             JOptionPane.showMessageDialog(null, "Please input a process");
@@ -447,28 +375,39 @@ public class AllocAlgos extends javax.swing.JFrame {
             else{
                 switch(algo){
                     case "FCFS" :   FCFS algo0 = new FCFS(processList);
+                                    aa.setEnabled(false);
                                     algo0.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
+                                    aa.setEnabled(true);
+                                    clearAll();
                                     processList.clear();
                                     break;
                     case "SJN/SJF" : SJN algo1 = new SJN(processList);
+                                    aa.setEnabled(false);
                                     algo1.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
+                                    aa.setEnabled(true);
                                     processList.clear();
                                     break;
                     case "Priority Scheduling" : PSched algo2 = new PSched(processList);
+                                    aa.setEnabled(false);
                                     algo2.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
+                                    aa.setEnabled(true);
                                     processList.clear();
                                     break;
                     case "SRT" : SRT algo3 = new SRT(processList);
+                                    aa.setEnabled(false);
                                     algo3.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details"); 
+                                    aa.setEnabled(true);
                                     processList.clear();
                                     break;
                     case "Round Robin" : RoundRobin algo4 = new RoundRobin(processList,quantum);
+                                    aa.setEnabled(false);
                                     algo4.go();
                                     JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");  
+                                    aa.setEnabled(true);
                                     processList.clear();
                                     break;
                     case "choose..." : JOptionPane.showMessageDialog(null, "Please choose an algorithm"); cb_Algo.requestFocus();break;
@@ -510,7 +449,7 @@ public class AllocAlgos extends javax.swing.JFrame {
         catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Please input a number");
             txt_Quantum.setText("");
-            quantum = -1;
+            quantum = 1;
         }
     }//GEN-LAST:event_txt_QuantumFocusLost
 
@@ -547,6 +486,7 @@ public class AllocAlgos extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     
+    public static AllocAlgos aa = new AllocAlgos();
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -576,7 +516,7 @@ public class AllocAlgos extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new AllocAlgos().setVisible(true);
+            aa.setVisible(true);
         });        
     }
 
@@ -588,15 +528,9 @@ public class AllocAlgos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_Algo;
     private javax.swing.JComboBox<String> cb_ArrivalTime;
     private javax.swing.JComboBox<String> cb_Prio;
-    private javax.swing.JFrame jFrame1;
-    private javax.swing.JFrame jFrame2;
-    private javax.swing.JFrame jFrame3;
-    private javax.swing.JFrame jFrame4;
-    private javax.swing.JFrame jFrame5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_ArrivalTime;
     private javax.swing.JLabel lbl_Priority;

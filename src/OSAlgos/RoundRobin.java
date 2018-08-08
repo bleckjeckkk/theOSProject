@@ -5,21 +5,14 @@
  */
 package OSAlgos;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 /**
  *
  * @author Dan
  */
-public class RoundRobin extends Algo{
+public class RoundRobin extends Algo {
     int qTime = 0;
     int total = 0;
     
@@ -59,13 +52,13 @@ public class RoundRobin extends Algo{
                         time = time + qTime;
                         System.out.println("Put on hold for next process.");
                         System.out.println("Cycles Remaining: " + cycles);
-                        animateMe.add(new Animatable(p.getName(),qTime,false));
+                        animateMe.add(new Animatable(p.getName(),qTime,false,time,qTime));
                     }else{
                         int timeDiff = Math.abs(remCycles);
                         int timeUsed = qTime - timeDiff;
                         time = time + timeUsed;
                         System.out.println("Process done.");
-                        animateMe.add(new Animatable(p.getName(),timeUsed, true));
+                        animateMe.add(new Animatable(p.getName(),timeUsed, true,time,timeUsed));
                     }
                 }
             }
@@ -84,7 +77,6 @@ public class RoundRobin extends Algo{
         
         jf.setTitle("DisplayTimeline");
         jf.setSize(1280,720);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jf.add(d);
         jf.setVisible(true);
     }
