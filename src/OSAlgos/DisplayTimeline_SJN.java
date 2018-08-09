@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
-class DisplayTimeline_PSched extends JPanel implements ActionListener{
+class DisplayTimeline_SJN extends JPanel implements ActionListener{
     Timer tm = new Timer(5,this);
     int startX = 100;
     int x = 0, y = 30, velX = 1;
@@ -18,11 +18,11 @@ class DisplayTimeline_PSched extends JPanel implements ActionListener{
     int i = 0;
     ArrayList<Animatable> pList;
     
-    DisplayTimeline_PSched(){
+    DisplayTimeline_SJN(){
         
     }
     
-    DisplayTimeline_PSched(ArrayList<Animatable> list){
+    DisplayTimeline_SJN(ArrayList<Animatable> list){
         pList = list;
         for(Animatable a : pList){
             a.sequence = a.sequence * 100;
@@ -37,7 +37,7 @@ class DisplayTimeline_PSched extends JPanel implements ActionListener{
         g.setColor(Color.WHITE);
         g.fillRect(5,5,40,20);
         g.setColor(Color.BLACK);
-        g.drawString("Process Name", 5, 20);
+        g.drawString("Priority-Name", 5, 20);
         
         try{
             g.setColor(Color.BLACK);

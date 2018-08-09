@@ -46,4 +46,8 @@ public class Algo{
     public void sortByArrivalTimePrio(){
         Collections.sort(processList,new ArrivalTimePrioComparator());
     }
+    
+    public void sortByCycleTime(){
+        Collections.sort(processList,new CycleComparator());
+    }
 }

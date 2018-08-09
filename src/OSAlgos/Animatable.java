@@ -35,7 +35,7 @@ public class Animatable {
         sequence = order++;
     }    
     
-    //for Priority 
+    //for Priority && SJN/SJF
     Animatable(String name, int size, Boolean isDone,int priority,int time){
         processName = name;
         this.size = size;
