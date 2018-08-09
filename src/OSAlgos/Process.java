@@ -1,12 +1,15 @@
 package OSAlgos;
 public class Process {
 
+    private static int num = 0;
+    private int id;
     private String name;
     private int cycles;
     private final int arrivalTime;
     private int priority;
 
     Process(String name, int cycles, int arrivalTime,int priority){
+        this.id = num++;
         this.name = name;
         this.cycles= cycles;
         this.arrivalTime = arrivalTime;
@@ -43,6 +46,10 @@ public class Process {
 
     public void setPriority(int priority) {
         this.priority = priority;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void getInfo(){

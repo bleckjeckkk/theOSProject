@@ -12,8 +12,8 @@ import java.util.ArrayList;
  * @author Dan
  */
 public class SJN extends Algo{
-    SJN(ArrayList<Process> arr, javax.swing.JTextArea ta){
-        super(arr, ta);
+    SJN(ArrayList<Process> arr){
+        super(arr);
     }
     
     public void go() throws InterruptedException{
