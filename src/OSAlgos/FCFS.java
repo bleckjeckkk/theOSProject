@@ -30,6 +30,7 @@ public class FCFS extends Algo{
         int cycles;
         String name;
         int j=0;
+        
         for(Process p : pList){
             name = p.getName();
             cycles = p.getCycles();
