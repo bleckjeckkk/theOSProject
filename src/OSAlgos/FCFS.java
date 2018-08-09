@@ -5,10 +5,6 @@
  */
 package OSAlgos;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JFrame;
@@ -59,12 +55,10 @@ public class FCFS extends Algo{
         //DISPLAY
         total = time;
         System.out.print("proc:" + Arrays.toString(timeArr));
-        //DisplayTimeline_FCFS d = new DisplayTimeline_FCFS(timeArr,time);));
         DisplayTimeline_FCFS d = new DisplayTimeline_FCFS(animateMe);
         
         JFrame jf = new JFrame();
-        
-        
+                
         jf.setTitle("DisplayTimeline");
         jf.setSize(1280,720);
         jf.add(d);

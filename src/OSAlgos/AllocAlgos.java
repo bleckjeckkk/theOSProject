@@ -69,6 +69,7 @@ public class AllocAlgos extends javax.swing.JFrame {
         txt_Console = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         lbl_ProcessName.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lbl_ProcessName.setText("Process Name");
@@ -240,7 +241,7 @@ public class AllocAlgos extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(lbl_Quantum, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
                     .addComponent(txt_Quantum, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btn_Go, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cb_Algo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -338,6 +339,11 @@ public class AllocAlgos extends javax.swing.JFrame {
         // TODO add your handling code here:
         try{
             processCycles = parseInt(txt_ProcessCycles.getText());
+            if(processCycles <= 0){
+                JOptionPane.showMessageDialog(null, "Please input a number");
+                txt_ProcessCycles.setText("");
+                processCycles = -1;
+            }
         }
         catch(NumberFormatException e){
             JOptionPane.showMessageDialog(null, "Please input a number");
@@ -377,7 +383,7 @@ public class AllocAlgos extends javax.swing.JFrame {
                     case "FCFS" :   FCFS algo0 = new FCFS(processList);
                                     aa.setEnabled(false);
                                     algo0.go();
-                                    JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
+                                    //JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
                                     aa.setEnabled(true);
                                     clearAll();
                                     processList.clear();
@@ -385,7 +391,7 @@ public class AllocAlgos extends javax.swing.JFrame {
                     case "SJN/SJF" : SJN algo1 = new SJN(processList);
                                     aa.setEnabled(false);
                                     algo1.go();
-                                    JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
+                                    //JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
                                     aa.setEnabled(true);
                                     clearAll();
                                     processList.clear();
@@ -393,7 +399,7 @@ public class AllocAlgos extends javax.swing.JFrame {
                     case "Priority Scheduling" : PSched algo2 = new PSched(processList);
                                     aa.setEnabled(false);
                                     algo2.go();
-                                    JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
+                                    //JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");
                                     aa.setEnabled(true);
                                     clearAll();
                                     processList.clear();
@@ -401,7 +407,7 @@ public class AllocAlgos extends javax.swing.JFrame {
                     case "SRT" : SRT algo3 = new SRT(processList);
                                     aa.setEnabled(false);
                                     algo3.go();
-                                    JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details"); 
+                                    //JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details"); 
                                     aa.setEnabled(true);
                                     clearAll();
                                     processList.clear();
@@ -409,7 +415,7 @@ public class AllocAlgos extends javax.swing.JFrame {
                     case "Round Robin" : RoundRobin algo4 = new RoundRobin(processList,quantum);
                                     aa.setEnabled(false);
                                     algo4.go();
-                                    JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");  
+                                    //JOptionPane.showMessageDialog(null, "Process Done!\nProcess List cleared!\n\nPlease check console for details");  
                                     aa.setEnabled(true);
                                     clearAll();
                                     processList.clear();

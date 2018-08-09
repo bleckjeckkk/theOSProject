@@ -19,6 +19,7 @@ public class Animatable {
     int end;
     int time;
     
+    //for FCFS
     Animatable(String name, int size, int end){
         processName = name;
         this.size = size;
@@ -26,21 +27,15 @@ public class Animatable {
         this.end = end;
     }
     
+    //for RoundRobin
     Animatable(String name, int size, Boolean isDone){
         processName = name;
         this.size = size;
         this.isDone = isDone;
         sequence = order++;
-    }
+    }    
     
-    Animatable(String name, int size, Boolean isDone,int priority){
-        processName = name;
-        this.size = size;
-        this.isDone = isDone;
-        sequence = order++;
-        this.priority = priority;
-    }
-    
+    //for Priority 
     Animatable(String name, int size, Boolean isDone,int priority,int time){
         processName = name;
         this.size = size;

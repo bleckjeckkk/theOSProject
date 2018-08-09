@@ -12,10 +12,11 @@ import javax.swing.Timer;
 
 class DisplayTimeline_FCFS extends JPanel implements ActionListener{
     Timer tm = new Timer(5,this);
-    int x = 0, y= 10, velX = 1;
-    int[] timeArr = new int[20];
-    int totaltime = 0;
+    
+    int x = 0, y = 10, velX = 1;
+    
     int i = 0;
+    
     ArrayList<Animatable> pList;
     
     int startX = 100;
@@ -35,10 +36,15 @@ class DisplayTimeline_FCFS extends JPanel implements ActionListener{
         tm.start();
         
         try{
+            //Prints the name of the process
             g.setColor(Color.BLACK);
             g.drawString(pList.get(i).processName, 5,y + 15);
+            
+            //draws the rectangle
             g.setColor(Color.WHITE);
             g.fillRect(startX,y,x,20);
+            
+            //if it's the end of the process
             if(x == pList.get(i).size){
                 g.setColor(Color.BLACK);
                 g.drawString(String.valueOf(pList.get(i).end), startX + x + 5,y + 15);
