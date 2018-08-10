@@ -433,7 +433,7 @@ public class AllocAlgos extends javax.swing.JFrame {
     private void btn_ClearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_ClearMouseClicked
         // TODO add your handling code here:
         processList.clear();
-        JOptionPane.showMessageDialog(null, "Process List cleared!");
+        clearAll();
         
     }//GEN-LAST:event_btn_ClearMouseClicked
 

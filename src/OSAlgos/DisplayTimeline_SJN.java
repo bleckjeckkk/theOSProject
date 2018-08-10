@@ -41,7 +41,7 @@ class DisplayTimeline_SJN extends JPanel implements ActionListener{
         
         try{
             g.setColor(Color.BLACK);
-            g.drawString(pList.get(i).priority + "-" + pList.get(i).processName, 5,y + 15);
+            g.drawString(pList.get(i).processName, 5,y + 15);
             if(!pList.get(i).isDone){
                 g.setColor(Color.RED);
             }else{

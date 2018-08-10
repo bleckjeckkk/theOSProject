@@ -11,6 +11,7 @@ package OSAlgos;
  */
 public class Animatable {
     String processName;
+    int id;
     int size;
     Boolean isDone;
     private static int order = 0;
@@ -27,7 +28,7 @@ public class Animatable {
         this.end = end;
     }
     
-    //for RoundRobin
+    //for RoundRobin and SRT
     Animatable(String name, int size, Boolean isDone){
         processName = name;
         this.size = size;
@@ -37,6 +38,17 @@ public class Animatable {
     
     //for Priority && SJN/SJF
     Animatable(String name, int size, Boolean isDone,int priority,int time){
+        processName = name;
+        this.size = size;
+        this.isDone = isDone;
+        sequence = order++;
+        this.priority = priority;
+        this.time = time;
+    }
+    
+    //for Priority && SJN/SJF
+    Animatable(int id,String name, int size, Boolean isDone,int priority,int time){
+        this.id = id;
         processName = name;
         this.size = size;
         this.isDone = isDone;
