@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 /**
  *
  * @author Dan
+ * Shortest Remaining Time
  */
 public class SRT extends Algo{
     SRT(ArrayList<Process> arr){
@@ -18,23 +19,22 @@ public class SRT extends Algo{
     }
     
     public void go() throws InterruptedException{
-        sortByArrivalTime();
-        ArrayList<Process> pList = super.getList();
-        ArrayList<Process> container = new ArrayList();
+        sortByArrivalTime();                                //sorts the array list
+        ArrayList<Process> pList = super.getList();         //gets the arraylist
+        ArrayList<Process> container = new ArrayList();     //READY Queue
         
-        ArrayList<Animatable> animateMe = new ArrayList();
+        ArrayList<Animatable> animateMe = new ArrayList();  //will contain the Animatables for animation
         
-        System.out.println("SRT Algorithm");
+        int time = 0;               //total time
         
-        int time = 0;
-        int cycles;
-        String name;
+        int cycles;                 //for specific cycles
+        String name;                //for specific names
         
         int i = 0;                  //iterator
-        int ctrlTime = 1;           //quantum time
+        int ctrlTime = 1;           
         
-        Process p = null;
-        Process prev = null;
+        Process p = null;           //for current process
+        Process prev = null;        //for previous process
         
         int aniCycles = 0;          //to hold cycles for animation
         

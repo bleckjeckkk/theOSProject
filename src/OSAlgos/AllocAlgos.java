@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Dan
+ * let's do the spaghetti
  */
 public class AllocAlgos extends javax.swing.JFrame {
 
@@ -366,6 +367,7 @@ public class AllocAlgos extends javax.swing.JFrame {
             txt_Console.setText(txt_Console.getText() + "\nAdded Process '" + processName + "' -- " + processCycles + " cycles\n"
                                 + "Arrival Time : " + arrivalTime + "\n"
                                 + "Priority : " + priority);
+            clearAll();
         }
         else{
             JOptionPane.showMessageDialog(null, "Please input a process");

@@ -15,11 +15,11 @@ class DisplayTimeline_RR extends JPanel implements ActionListener{
     int startX = 25;
     int x = 0, y = 30, velX = 1;
     
-    int qTime;
+    int qTime;                  //quantum time
     
-    int i = 0;
+    int i = 0;                  //index for animatables
     
-    ArrayList<Animatable> pList;
+    ArrayList<Animatable> pList;//list for the processes to animate
     
     DisplayTimeline_RR(){
         
@@ -43,14 +43,19 @@ class DisplayTimeline_RR extends JPanel implements ActionListener{
         g.drawString("Quantum Time: " + qTime, 5, 20);
         
         try{
+            //writing the name
             g.setColor(Color.BLACK);
             g.drawString(pList.get(i).processName, 5,y + 15);
+            
+            //setting color and drawing rectangle
             if(!pList.get(i).isDone){
                 g.setColor(Color.RED);
             }else{
                 g.setColor(Color.GREEN);
             }
             g.fillRect(startX,y,x,20);
+            
+            //if process is done
             if(x == pList.get(i).time){
                 g.setColor(Color.BLACK);
                 g.drawString(String.valueOf(pList.get(i).priority) + "("+ String.valueOf(pList.get(i).time) +")", startX + x + 5,y + 15);

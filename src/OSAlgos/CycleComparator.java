@@ -10,6 +10,7 @@ import java.util.Comparator;
 /**
  *
  * @author Dan
+ * comparator for sorting by cycles
  */
 public class CycleComparator implements Comparator<Process>{
     @Override

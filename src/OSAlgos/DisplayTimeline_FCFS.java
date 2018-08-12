@@ -10,6 +10,12 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 
+/**
+ *
+ * @author Dan
+ * let's do the spaghetti
+ * derived from an online tutorial
+ */
 class DisplayTimeline_FCFS extends JPanel implements ActionListener{
     Timer tm = new Timer(5,this);
     

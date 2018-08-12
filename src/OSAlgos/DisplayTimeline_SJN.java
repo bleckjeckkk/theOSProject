@@ -14,7 +14,6 @@ class DisplayTimeline_SJN extends JPanel implements ActionListener{
     Timer tm = new Timer(5,this);
     int startX = 100;
     int x = 0, y = 30, velX = 1;
-    Boolean cleared = false;
     int i = 0;
     ArrayList<Animatable> pList;
     
@@ -37,17 +36,22 @@ class DisplayTimeline_SJN extends JPanel implements ActionListener{
         g.setColor(Color.WHITE);
         g.fillRect(5,5,40,20);
         g.setColor(Color.BLACK);
-        g.drawString("Priority-Name", 5, 20);
+        g.drawString("Process Name", 5, 20);
         
         try{
+            //writing the name
             g.setColor(Color.BLACK);
             g.drawString(pList.get(i).processName, 5,y + 15);
+            
+            //setting color and drawing rectangle
             if(!pList.get(i).isDone){
                 g.setColor(Color.RED);
             }else{
                 g.setColor(Color.GREEN);
             }
             g.fillRect(startX,y,x,20);
+            
+            //if process is done
             if(x == pList.get(i).size){
                 g.setColor(Color.BLACK);
                 g.drawString(String.valueOf(pList.get(i).time), startX + x + 5,y + 15);

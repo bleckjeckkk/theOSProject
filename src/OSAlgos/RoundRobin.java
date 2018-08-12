@@ -11,10 +11,10 @@ import javax.swing.JFrame;
 /**
  *
  * @author Dan
+ * Round Robin Algorithm
  */
 public class RoundRobin extends Algo {
-    int qTime = 0;
-    int total = 0;
+    int qTime = 0;  //contain quantum time
     
     RoundRobin(ArrayList<Process> arr,int qTime){
         super(arr);
@@ -24,52 +24,40 @@ public class RoundRobin extends Algo {
     ArrayList<Animatable> animateMe = new ArrayList<>();
     
     public void go() throws InterruptedException{
-        sortByArrivalTime();
-        ArrayList<Process> pList =  super.getList();
+        sortByArrivalTime();                                //sorts by arrival time
+        ArrayList<Process> pList =  super.getList();        //gets the sorted list
         
-        System.out.println("RoundRobin Algorithm");
-        System.out.println("Quantum Time: " + qTime + " cycles./n");
         
-        int time = 0;
-        int cycles;
-        String name;
-        int totalCycles;
-        while(true){
+        int time = 0;           //contain total time (for animation)
+        int cycles;             //will contain individual cycles for adding to total and animations
+        String name;            //will contain individual name and animations
+        int totalCycles;        //the Index Control Expression
+        
+        totalCycles = getTotalCycles();  
+        while(totalCycles <= 0){
             for(Process p : pList){
+                //getting info
                 name = p.getName();
                 cycles = p.getCycles();
-                if(cycles > 0){
-                    System.out.println("----------------------------------------");
-                    System.out.print("Allocating for process " + name);
-                    System.out.println(" with " + cycles + " cycles Remaining: ");
-                    //Thread.sleep(500);
-                    
-                    System.out.println("Starting process " + name + "...");
-                    int remCycles = cycles - qTime;
+                
+                if(cycles > 0){                                 //if not yet done
+                    int remCycles = cycles - qTime;             //subtract cycles by quantum time
                     p.setCycles(remCycles);
                     
-                    if(remCycles > 0){
+                    if(remCycles > 0){                          //if not yet done after subtracting
                         time = time + qTime;
-                        System.out.println("Put on hold for next process.");
-                        System.out.println("Cycles Remaining: " + cycles);
                         animateMe.add(new Animatable(p.getName(),qTime,false,time,qTime));
-                    }else{
-                        int timeDiff = Math.abs(remCycles);
-                        int timeUsed = qTime - timeDiff;
-                        time = time + timeUsed;
-                        System.out.println("Process done.");
+                    }else{                                      //if done after subtracting
+                        int timeDiff = Math.abs(remCycles);     //time difference for the animation and info
+                        int timeUsed = qTime - timeDiff;        //time difference for the animation and info
+                        time = time + timeUsed;                 //increments the total time
                         animateMe.add(new Animatable(p.getName(),timeUsed, true,time,timeUsed));
                     }
                 }
             }
-            totalCycles = getTotalCycles();            
-            if(totalCycles <= 0)
-                break;
+            totalCycles = getTotalCycles();
         }
-        
-        System.out.println("RoundRobin done!\n" 
-                + "Cycles elapsed: " + time);
-        
+                
         //DISPLAY
         DisplayTimeline_RR d = new DisplayTimeline_RR(animateMe,qTime);
         

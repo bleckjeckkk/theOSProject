@@ -1,13 +1,22 @@
 package OSAlgos;
+
+
+/**
+ *
+ * @author Dan
+ * Process superclass
+ * a class that will contain all information of a process
+ */
+    
 public class Process {
 
     private static int num = 0;
-    private int id;
+    private final int id;
     private String name;
     private int cycles;
     private final int arrivalTime;
     private int priority;
-
+    
     Process(String name, int cycles, int arrivalTime,int priority){
         this.id = num++;
         this.name = name;
@@ -54,7 +63,7 @@ public class Process {
 
     public void getInfo(){
         System.out.println("----- INFO -----");
-        System.out.println("Process #" + this.arrivalTime);
+        System.out.println("ID: " + this.id + " Priority #" + this.priority);
         System.out.println("Name: " + this.getName());
         System.out.println("Cycles: " + this.getCycles());
         System.out.println("Arrival Time: " + this.getArrivalTime());

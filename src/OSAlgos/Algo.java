@@ -11,6 +11,8 @@ import java.util.Collections;
 /**
  *
  * @author Dan
+ * this is basically a container for processes...
+ * and a sorter
  */
 public class Algo{
     private int totalTime = 0;

@@ -5,12 +5,12 @@
  */
 package OSAlgos;
 
-import OSAlgos.Process;
 import java.util.Comparator;
 
 /**
  *
  * @author Dan
+ * comparator for grouping by arrival time, sorting by priority
  */
 public class ArrivalTimePrioComparator implements Comparator<Process>{
     @Override

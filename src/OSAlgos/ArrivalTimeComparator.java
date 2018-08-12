@@ -10,6 +10,7 @@ import java.util.Comparator;
 /**
  *
  * @author Dan
+ * comparator for sorting by arrivaltime
  */
 public class ArrivalTimeComparator implements Comparator<Process>{
     @Override

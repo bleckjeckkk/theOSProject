@@ -11,25 +11,23 @@ import javax.swing.JFrame;
 /**
  *
  * @author Dan
+ * First-Come-First-Served Algorithm
  */
-public class FCFS extends Algo{
-    int[] timeArr = new int[20];
-    ArrayList<Animatable> animateMe = new ArrayList<>();
-    int total = 0;
+public class FCFS extends Algo{ 
+    ArrayList<Animatable> animateMe = new ArrayList<>();        //arraylist to handle animations (same with others)
     
     FCFS(ArrayList<Process> arr){
         super(arr);
     }
     
     public void go() throws InterruptedException{
-        sortByArrivalTime();
-        ArrayList<Process> pList = super.getList();
-        System.out.println("FCFS Algorithm");
+        sortByArrivalTime();                                    //sorts the list by arrival time
+        ArrayList<Process> pList = super.getList();             //gets the sorted list
         
-        int time = 0;
-        int cycles;
-        String name;
-        int j=0;
+        int time = 0;                                           //contains amount of used cycle time
+        int cycles;                                             //var to contain individual cycles (for animations and adding to total time)
+        String name;                                            //var to contain individual name (for animations and debugging)
+
         
         for(Process p : pList){
             name = p.getName();
@@ -38,24 +36,14 @@ public class FCFS extends Algo{
             System.out.println("Allocating process: " + name + "...");
             System.out.println("Will take " + cycles + " cycles");
 
-           
             time = time + cycles;
-            int i=0;
-            while(i!=time){
-                System.out.print("|");
-                i++;
-            }
-            timeArr[j] = cycles;
-            System.out.println("Done!\n");
-            j++;
+            
+            //create a new Animatable object for animation in the animateMe list
             animateMe.add(new Animatable(name,cycles,time));
+            
         }
-        System.out.println("FCFS done!\n" 
-                + "Cycles elapsed: " + time);
         
         //DISPLAY
-        total = time;
-        System.out.print("proc:" + Arrays.toString(timeArr));
         DisplayTimeline_FCFS d = new DisplayTimeline_FCFS(animateMe);
         
         JFrame jf = new JFrame();
